@@ -1,0 +1,21 @@
+app-credit-card,app-addres{
+    width: 50%;
+}
+.cardList{
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+.addCard{
+    width: 100%;
+    text-align: center;
+}
+.nextThree{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.addCard>button{
+    width: 50%;
+    margin-bottom: 20px;
+}

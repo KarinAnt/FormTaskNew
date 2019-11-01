@@ -1,0 +1,19 @@
+<form [formGroup]='stepOne' (ngSubmit)="next()" class="form">
+    <input type="text" placeholder="UserName" formControlName='userName'>
+    <div class="errors">
+        <p *ngIf="showError(stepOne, 'userName')">{{getErrorMessage('userName')}}</p>   
+    </div>
+    <input type="email" name=""  placeholder="Email" formControlName='email'>
+    <div class="errors">
+        <p *ngIf="showError(stepOne, 'email')">{{getErrorMessage('email')}}</p>   
+    </div>
+    <input type="password" name=""  placeholder="Password" formControlName='password'>
+    <div class="errors">
+        <p *ngIf="showError(stepOne, 'password')">{{getErrorMessage('password')}}</p>   
+    </div>
+    <input type="password" name=""  placeholder="Confirm Password" formControlName='confirmPassword'>
+    <div class="errors">
+        <p *ngIf="comparePasswordsErr">{{comparePasswordsText}}</p>
+    </div>
+    <button >Next</button>
+</form>

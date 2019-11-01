@@ -1,0 +1,10 @@
+input{
+    height: 20px;
+    margin:5px 0;
+    width: 90%;
+}
+form{
+    padding: 0px 0;
+    display: inline-block;
+    width: 100%;
+}

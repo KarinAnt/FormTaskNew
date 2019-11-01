@@ -1,0 +1,10 @@
+.stepFour{
+    color:white;
+    font-size: 17px;
+    width: 40%;
+    padding: 30px;
+    background-color: crimson;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px 1px crimson;
+    margin:50px auto;
+}
