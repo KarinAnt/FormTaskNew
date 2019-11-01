@@ -1,4 +1,4 @@
-<app-stepone (nextToStepTwo)='nextStepTwo($event)' *ngIf="toStepTwo"></app-stepone>
+<app-stepone (nextToStepTwo)='nextStepTwo($event)' *ngIf="toStepTwo" (stepOneArray)='stepOneObject($event)'></app-stepone>
 <app-steptwo (toStepThree)='nextStepThree($event)' *ngIf="!toStepTwo &&  toStepThree" (toStepOne)='nextStepTwo($event)'></app-steptwo>
 <app-stepthree *ngIf="!toStepThree && toStepFour" (backStepTwo)="backToStepTwo($event)" (toStepFour)="subStepFour()"></app-stepthree>
-<app-stepfour *ngIf="!toStepFour"></app-stepfour>
+<app-stepfour *ngIf="!toStepFour"[stepOneArray]='stepOneArray'></app-stepfour>

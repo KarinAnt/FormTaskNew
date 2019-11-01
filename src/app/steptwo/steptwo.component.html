@@ -2,11 +2,11 @@
     <div class="addCard">
         <button type="button" (click)="addCardList()">Add credit card</button>
     </div>
-    <app-credit-card *ngFor="let cardList of creditCardList" [inputTrue]='inputTrue'></app-credit-card>
+    <app-credit-card *ngFor="let cardList of creditCardList" [inputTrue]='inputTrue' (noNext)='noNextThree($event)'></app-credit-card>
     <div class="addCard">
         <button type="button" (click)='addAddres()'>Add biling addres</button>
     </div>
-    <app-addres *ngIf="addresOpen"></app-addres>
+    <app-addres *ngIf="addresOpen" [inputTrue]='inputTrue'></app-addres>
     <div class="nextThree">
         <button type="button" (click)="backToStepOne()">Back</button>
         <button (click)="inputTrue=true">Next</button>

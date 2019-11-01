@@ -9,6 +9,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class SteponeComponent implements OnInit {
   @Output() nextToStepTwo = new EventEmitter();
+  @Output() stepOneArray = new EventEmitter();
   nextStepTwo = true;
   comparePasswordsText: string;
   comparePasswordsErr: boolean =false;
@@ -29,7 +30,9 @@ export class SteponeComponent implements OnInit {
     this.comparePasswords();
     this.validateAllFormFields(this.stepOne);
     // if(this.stepOne.valid && !this.comparePasswordsErr) {
-      this.nextToStepTwo.emit(false); 
+      this.nextToStepTwo.emit(false);
+      console.log(this.stepOne.value); 
+      this.stepOneArray.emit(this.stepOne.value);
     // } else {
       // this.validateAllFormFields(this.stepOne);
     // }

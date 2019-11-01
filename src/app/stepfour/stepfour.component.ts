@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-stepfour',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stepfour.component.css']
 })
 export class StepfourComponent implements OnInit {
-
+  @Input() stepOneArray:object;
   constructor() { }
 
   ngOnInit() {

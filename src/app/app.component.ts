@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'FormTask';
+  stepOneArray = [];
   toStepTwo = true;
   toStepThree = true;
   toStepFour = true;
@@ -21,5 +22,8 @@ export class AppComponent {
   }
   subStepFour(event){
     this.toStepFour=event;
+  }
+  stepOneObject(event){
+    this.stepOneArray = event;
   }
 }

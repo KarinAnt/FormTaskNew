@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-addres',
@@ -6,8 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addres.component.css']
 })
 export class AddresComponent implements OnInit {
+  @Input() inputTrue: boolean;
 
-  constructor() { }
+  addres = this.fb.group({
+    city: ['', Validators.required],
+    stretName: ['', [Validators.required]],
+    appartment: ['', [Validators.required]]
+  });
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
   }

@@ -1,5 +1,5 @@
 <form action="" class="form" [formGroup]='card'>
-    <input type="text" placeholder="Card Number" formControlName='cardNumber' appCardNumber>
+    <input type="text" placeholder="Card Number" formControlName='cardNumber'>
     <div class="errors">
         <p *ngIf="card.controls.cardNumber.hasError('required') && inputTrue ">Card Number is empty!!!</p>   
         <p *ngIf="card.controls.cardNumber.hasError('minlength') && inputTrue">Card Number is min!!!</p>    
@@ -9,9 +9,14 @@
         <p *ngIf="card.controls.owner.hasError('required') && inputTrue ">Owner Number is empty!!!</p>   
         <p *ngIf="card.controls.owner.hasError('pattern') && inputTrue">Owner no start Mr or Mrs!!!</p>    
     </div>
-    <input type="text" placeholder="cw" formControlName='cw' appCw>
+    <input type="text" placeholder="Cvv" formControlName='cw' appCw>
     <div class="errors">
         <p *ngIf="card.controls.cw.hasError('required') && inputTrue ">Cw is empty!!!</p>   
+        <p *ngIf="card.controls.cw.hasError('pattern') && inputTrue ">You can write only 3 numbers!!!</p>   
     </div>
-    <input type="text" placeholder="expiration" formControlName='expiration'>
+    <input type="text" placeholder="Expiration" formControlName='expiration'>
+    <div class="errors">
+            <p *ngIf="card.controls.expiration.hasError('required') && inputTrue ">Expiration is empty!!!</p>   
+            <p *ngIf="card.controls.expiration.hasError('pattern') && inputTrue ">You can write Date!!!</p>   
+        </div>
 </form>

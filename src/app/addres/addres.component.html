@@ -1,5 +1,14 @@
-<form action="" class="form">
-    <input type="text" placeholder="City/Provinse">
-    <input type="text" placeholder="Stret Name">
-    <input type="text" placeholder="Apt">
+<form action="" class="form" [formGroup]='addres'>
+    <input type="text" placeholder="City/Provinse" formControlName='city'>
+    <div class="errors">
+        <p *ngIf="addres.controls.city.hasError('required') && inputTrue ">City/Provinse is empty!!!</p>   
+    </div>
+    <input type="text" placeholder="Stret Name" formControlName='stretName'>
+    <div class="errors">
+        <p *ngIf="addres.controls.stretName.hasError('required') && inputTrue ">Stret Name is empty!!!</p>   
+    </div>
+    <input type="text" placeholder="Appartment" formControlName='appartment'>
+    <div class="errors">
+        <p *ngIf="addres.controls.appartment.hasError('required') && inputTrue ">Appartment is empty!!!</p>   
+    </div>
 </form>
