@@ -10,7 +10,8 @@ import { map,tap, distinctUntilChanged } from 'rxjs/operators';
 export class CreditCardComponent implements OnInit {
   @Input() inputTrue: boolean;
   @Output() noNext = new EventEmitter();
-
+  @Output() cardArray = new EventEmitter();
+  @Input() backCardArray: object;
   card = this.fb.group({
     cardNumber: ['', [Validators.required, Validators.minLength(19)]],
     owner: ['', [Validators.required, Validators.pattern('^(Mr\. )|(Mrs\. )|(Mss\. )')]],
@@ -26,8 +27,13 @@ export class CreditCardComponent implements OnInit {
   constructor(private fb: FormBuilder) { 
   }
 
-  ngOnInit() {
-     this.noNext.emit(this.card.valid);    
+  ngOnInit() {  
+    this.card.setValue({
+      cardNumber: this.backCardArray['cardNumber'],
+      owner:this.backCardArray['owner'] ,
+      cw:this.backCardArray['cw'] ,
+      expiration:this.backCardArray['expiration']
+    }); 
      this.cardInput.valueChanges.pipe(
        distinctUntilChanged(),
        map(value => this.formatCardNumber(value)),
@@ -38,7 +44,6 @@ export class CreditCardComponent implements OnInit {
       map(value => this.formatExDate(value)),
       tap(value => this.exDate.patchValue(value))
       ).subscribe();
-      console.log(this.card.valid)
    }
   private formatCardNumber(value: string): string {
      return value
@@ -47,13 +52,16 @@ export class CreditCardComponent implements OnInit {
        .slice(0, 16)
        .replace(/(\d{4})(?!$)/g, "$1 ");
    }
-   
- 
  private formatExDate(value: string): string {
     return value
       .replace(/\/+/g, "")
       .replace(/\D/g, "")
       .slice(0, 4)
       .replace(/(\d{2})(?!$)/g, "$1/");
+  }
+  changeThis(){
+       this.noNext.emit(this.card.valid);  
+       this.cardArray.emit(this.card.value);  
+
   }
 }

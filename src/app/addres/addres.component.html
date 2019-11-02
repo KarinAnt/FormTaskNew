@@ -1,4 +1,4 @@
-<form action="" class="form" [formGroup]='addres'>
+<form action="" class="form" [formGroup]='addres' (change)='changeThis()'>
     <input type="text" placeholder="City/Provinse" formControlName='city'>
     <div class="errors">
         <p *ngIf="addres.controls.city.hasError('required') && inputTrue ">City/Provinse is empty!!!</p>   

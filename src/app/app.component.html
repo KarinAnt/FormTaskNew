@@ -1,4 +1,4 @@
-<app-stepone (nextToStepTwo)='nextStepTwo($event)' *ngIf="toStepTwo" (stepOneArray)='stepOneObject($event)'></app-stepone>
-<app-steptwo (toStepThree)='nextStepThree($event)' *ngIf="!toStepTwo &&  toStepThree" (toStepOne)='nextStepTwo($event)'></app-steptwo>
+<app-stepone (nextToStepTwo)='nextStepTwo($event)' *ngIf="toStepTwo" (stepOneArray)='stepOneObject($event)' [backStepOneArray]='stepOneArray'></app-stepone>
+<app-steptwo (toStepThree)='nextStepThree($event)' *ngIf="!toStepTwo &&  toStepThree" (toStepOne)='nextStepTwo($event)' (cardObject)='cardObjectFun($event)' (addresObject)='addresObjectFun($event)' [backCardArray]='cardObject' [backAddresArray]='addresObject' (cardListOutput)='cardListOutputFun()'[cardListInput]='cardListOutput'></app-steptwo>
 <app-stepthree *ngIf="!toStepThree && toStepFour" (backStepTwo)="backToStepTwo($event)" (toStepFour)="subStepFour()"></app-stepthree>
-<app-stepfour *ngIf="!toStepFour"[stepOneArray]='stepOneArray'></app-stepfour>
+<app-stepfour *ngIf="!toStepFour" [stepOneArray]='stepOneArray' [cardObject]='cardObject' [addresObject]='addresObject' ></app-stepfour>

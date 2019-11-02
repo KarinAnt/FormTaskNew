@@ -1,4 +1,4 @@
-<form action="" class="form" [formGroup]='card'>
+<form action="" class="form" [formGroup]='card' (change)='changeThis()'>
     <input type="text" placeholder="Card Number" formControlName='cardNumber'>
     <div class="errors">
         <p *ngIf="card.controls.cardNumber.hasError('required') && inputTrue ">Card Number is empty!!!</p>   
@@ -16,7 +16,7 @@
     </div>
     <input type="text" placeholder="Expiration" formControlName='expiration'>
     <div class="errors">
-            <p *ngIf="card.controls.expiration.hasError('required') && inputTrue ">Expiration is empty!!!</p>   
-            <p *ngIf="card.controls.expiration.hasError('pattern') && inputTrue ">You can write Date!!!</p>   
-        </div>
+        <p *ngIf="card.controls.expiration.hasError('required') && inputTrue ">Expiration is empty!!!</p>   
+        <p *ngIf="card.controls.expiration.hasError('pattern') && inputTrue ">You can write Date!!!</p>   
+    </div>
 </form>

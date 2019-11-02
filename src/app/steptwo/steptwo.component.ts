@@ -10,12 +10,24 @@ export class SteptwoComponent implements OnInit {
   inputTrue:boolean = false;
   addresOpen = false;
   errorToStepThree = false;
+  errorToStepThreeAdd = false;
   add = 0;
+  cardArray = [];
+  addresArray=[];
   @Output() toStepThree = new EventEmitter;
   @Output() toStepOne = new EventEmitter;
+  @Output() cardObject = new EventEmitter;
+  @Output() addresObject = new EventEmitter;
+  @Input() backCardArray: object;
+  @Input() backAddresArray: object;
+  @Output() cardListOutput = new EventEmitter();
+  @Input() cardListInput: number;
   constructor() {}
 
   ngOnInit() {
+    for(let i = 0; i< this.cardListInput; i++){
+      this.creditCardList.push(1);
+    }
   }
   addCardList(){
     this.add++;
@@ -26,13 +38,12 @@ export class SteptwoComponent implements OnInit {
     }
   }
   nextStepThree(){
-      this.inputTrue = true;
-      console.log(this.errorToStepThree);
-    // if(this.errorToStepThree){
-    //   this.toStepThree.emit(false);
-    // }
-    // if(this.add > 1){
+    this.inputTrue = true;
+    // if(this.errorToStepThree && this.add > 1 && this.errorToStepThreeAdd){
       this.toStepThree.emit(false);
+      this.cardObject.emit(this.cardArray);
+      this.addresObject.emit(this.addresArray);
+      this.cardListOutput.emit(this.creditCardList.length);
     // }
   }
   backToStepOne(){
@@ -43,8 +54,15 @@ export class SteptwoComponent implements OnInit {
     this.add++;
   }
   noNextThree(event){
-    console.log(event, '1');
     this.errorToStepThree = event;
-    console.log(event, '2');
+  }
+  noNextThreeAdd(event){
+    this.errorToStepThreeAdd = event;
+  }
+  cardArrayFun(event){
+    this.cardArray=event;
+  }
+  addresArrayFun(event){
+    this.addresArray=event;
   }
 }

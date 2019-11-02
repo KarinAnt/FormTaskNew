@@ -1,6 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-// import { filter } from 'minimatch';
 
 @Component({
   selector: 'app-stepone',
@@ -10,6 +9,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 export class SteponeComponent implements OnInit {
   @Output() nextToStepTwo = new EventEmitter();
   @Output() stepOneArray = new EventEmitter();
+  @Input() backStepOneArray:object;
   nextStepTwo = true;
   comparePasswordsText: string;
   comparePasswordsErr: boolean =false;
@@ -23,6 +23,12 @@ export class SteponeComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.stepOne.setValue({
+      userName: this.backStepOneArray['userName'],
+      email:this.backStepOneArray['email'] ,
+      password:this.backStepOneArray['password'] ,
+      confirmPassword:this.backStepOneArray['confirmPassword']
+    });
   }
 
   next(){
@@ -31,7 +37,6 @@ export class SteponeComponent implements OnInit {
     this.validateAllFormFields(this.stepOne);
     // if(this.stepOne.valid && !this.comparePasswordsErr) {
       this.nextToStepTwo.emit(false);
-      console.log(this.stepOne.value); 
       this.stepOneArray.emit(this.stepOne.value);
     // } else {
       // this.validateAllFormFields(this.stepOne);
@@ -68,8 +73,6 @@ export class SteponeComponent implements OnInit {
   }
 
   getErrorMessage(field){
-    console.count()
-    console.log(this.getControls(this.stepOne), 'this.getControls(ste)');
     switch(field){
       case 'email': 
       const emailErrors = this.getControls(this.stepOne).email.errors;

@@ -7,10 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'FormTask';
-  stepOneArray = [];
+  stepOneArray = {userName: "", email: "", password: "", confirmPassword: ""};
+  cardObject = {cardNumber: "", owner: "", cw: "", expiration: ""};
+  addresObject = {city: "", stretName: "", appartment: ""};
   toStepTwo = true;
   toStepThree = true;
   toStepFour = true;
+  cardListOutput = 0;
   nextStepTwo(event){
     this.toStepTwo= event;
   }
@@ -25,5 +28,14 @@ export class AppComponent {
   }
   stepOneObject(event){
     this.stepOneArray = event;
+  }
+  cardObjectFun(event){
+    this.cardObject = event;
+  }
+  addresObjectFun(event){
+    this.addresObject = event;
+  }
+  cardListOutputFun(event){
+    this.cardListOutput =event;
   }
 }

@@ -1,11 +1,11 @@
 <form action="" class="radio" (ngSubmit)="stepFour()" [formGroup]='subscribeLater'>
     <div>
-        <input type="radio" id="sub"  formControlName='subscribe'>
+        <input type="radio" id="sub"  formControlName='subscribe' name='subscribe'>
         <label for="sub">Subscribe</label>
     </div>
     <input type="email" placeholder="Email" class="email" formControlName='email'>
     <div>
-        <input type="radio" id="later"  formControlName='later'>
+        <input type="radio" id="later"  formControlName='subscribe' name='subscribe'>
         <label for="later">Later</label>
     </div>
     <div class="buttons">

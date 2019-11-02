@@ -7,6 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class StepfourComponent implements OnInit {
   @Input() stepOneArray:object;
+  @Input() cardObject:object;
+  @Input() addresObject:object;
   constructor() { }
 
   ngOnInit() {
