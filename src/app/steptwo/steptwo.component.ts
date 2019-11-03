@@ -26,6 +26,8 @@ export class SteptwoComponent implements OnInit {
   @Input() addresOpenInput: boolean;
   @Output() addOutput = new EventEmitter();
   @Input() addInput: number;
+  @Output() errorsTrue = new EventEmitter();
+  @Input() errorsTrueInput: boolean;
   constructor() {}
 
   ngOnInit() {
@@ -34,8 +36,8 @@ export class SteptwoComponent implements OnInit {
     }
     this.addresOpen = this.addresOpenInput;
     this.add = this.addInput;
-    console.log(this.add);
-
+    this.errorToStepThree = this.errorsTrueInput;
+    this.errorToStepThreeAdd = this.errorsTrueInput;
   }
   addCardList(){
     this.add++;
@@ -48,12 +50,12 @@ export class SteptwoComponent implements OnInit {
   nextStepThree(){
     this.inputTrue = true;
     this.addOutput.emit(this.add);
-    console.log(this.add, 'next');
     if(this.errorToStepThree && this.add > 1 && this.errorToStepThreeAdd){
       this.toStepThree.emit(false);
       this.cardObject.emit(this.cardArray);
       this.addresObject.emit(this.addresArray);
       this.cardListOutput.emit(this.creditCardList.length);
+      this.errorsTrue.emit(true);
     }
   }
   backToStepOne(){
