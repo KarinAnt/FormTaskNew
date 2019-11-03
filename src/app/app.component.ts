@@ -14,6 +14,8 @@ export class AppComponent {
   toStepThree = true;
   toStepFour = true;
   cardListOutput = 0;
+  addresOpenOutput = false;
+  addOutput=0;
   nextStepTwo(event){
     this.toStepTwo= event;
   }
@@ -36,6 +38,12 @@ export class AppComponent {
     this.addresObject = event;
   }
   cardListOutputFun(event){
-    this.cardListOutput =event;
+    this.cardListOutput = event;
+  }
+  addresOpenOutputFun(event){
+    this.addresOpenOutput = event;
+  }
+  addOutputFun(event){
+    this.addOutput = event;
   }
 }

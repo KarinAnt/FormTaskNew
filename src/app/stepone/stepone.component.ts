@@ -35,12 +35,12 @@ export class SteponeComponent implements OnInit {
     this.nextStepTwo = false;
     this.comparePasswords();
     this.validateAllFormFields(this.stepOne);
-    // if(this.stepOne.valid && !this.comparePasswordsErr) {
+    if(this.stepOne.valid && !this.comparePasswordsErr) {
       this.nextToStepTwo.emit(false);
       this.stepOneArray.emit(this.stepOne.value);
-    // } else {
-      // this.validateAllFormFields(this.stepOne);
-    // }
+    } else {
+      this.validateAllFormFields(this.stepOne);
+    }
     
   }
 
