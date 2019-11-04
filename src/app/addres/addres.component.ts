@@ -25,6 +25,11 @@ export class AddresComponent implements OnInit {
       stretName:this.backAddresArray['stretName'] ,
       appartment:this.backAddresArray['appartment'] 
     });
+    this.addresArray.emit({
+      city: this.backAddresArray['city'],
+      stretName:this.backAddresArray['stretName'] ,
+      appartment:this.backAddresArray['appartment'] 
+    });  
   }
   changeThis(){
     this.noNextAdd.emit(this.addres.valid);

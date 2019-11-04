@@ -44,6 +44,12 @@ export class CreditCardComponent implements OnInit {
       map(value => this.formatExDate(value)),
       tap(value => this.exDate.patchValue(value))
       ).subscribe();
+      this.cardArray.emit({
+        cardNumber: this.backCardArray['cardNumber'],
+        owner:this.backCardArray['owner'] ,
+        cw:this.backCardArray['cw'] ,
+        expiration:this.backCardArray['expiration']
+      }); 
    }
   private formatCardNumber(value: string): string {
      return value
@@ -62,6 +68,5 @@ export class CreditCardComponent implements OnInit {
   changeThis(){
        this.noNext.emit(this.card.valid);  
        this.cardArray.emit(this.card.value);  
-
   }
 }

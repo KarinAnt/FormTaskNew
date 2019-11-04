@@ -1,16 +1,19 @@
-<form action="" class="radio" (ngSubmit)="stepFour()" [formGroup]='subscribeLater'>
+<form action="" class="radio" (ngSubmit)="stepFour()" [formGroup]='subscribeLater' (change)='onChange()'>
     <div>
-        <input type="radio" id="sub"  formControlName='subscribe' name='subscribe'>
+        <input type="radio" id="sub" value="subscribe" formControlName='radios' name='radios'>
         <label for="sub">Subscribe</label>
     </div>
-    <input type="email" placeholder="Email" class="email" formControlName='email'>
+    <input type="email" placeholder="Email" class="email" formControlName='email' *ngIf="subscribeLater.value.radios == 'subscribe'">
+    <div class="errors">
+        <p *ngIf="subscribeLater.controls.email.hasError('required') && subscribeLater.value.radios == 'subscribe'">Email is empty!!!</p>   
+        <p *ngIf="subscribeLater.controls.email.hasError('pattern')  && subscribeLater.value.radios == 'subscribe'">It isn't email!!!</p>   
+    </div>
     <div>
-        <input type="radio" id="later"  formControlName='subscribe' name='subscribe'>
+        <input type="radio" id="later" value="later" formControlName='radios' name='radios'>
         <label for="later">Later</label>
     </div>
     <div class="buttons">
         <button type="button" (click)="backToStepTwo()">Back</button>
         <button>Submit</button>
-    </div>
-    
+    </div> 
 </form>

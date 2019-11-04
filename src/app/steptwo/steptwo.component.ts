@@ -14,20 +14,23 @@ export class SteptwoComponent implements OnInit {
   add = 0;
   cardArray = [];
   addresArray=[];
+
+  @Input() backCardArray: object;
+  @Input() backAddresArray: object;
+  @Input() cardListInput: number;
+  @Input() addInput: number;
+  @Input() errorsTrueInput: boolean;
+  
   @Output() toStepThree = new EventEmitter;
   @Output() toStepOne = new EventEmitter;
   @Output() cardObject = new EventEmitter;
   @Output() addresObject = new EventEmitter;
-  @Input() backCardArray: object;
-  @Input() backAddresArray: object;
   @Output() cardListOutput = new EventEmitter();
-  @Input() cardListInput: number;
   @Output() addresOpenOutput = new EventEmitter();
   @Input() addresOpenInput: boolean;
   @Output() addOutput = new EventEmitter();
-  @Input() addInput: number;
   @Output() errorsTrue = new EventEmitter();
-  @Input() errorsTrueInput: boolean;
+
   constructor() {}
 
   ngOnInit() {
@@ -73,7 +76,7 @@ export class SteptwoComponent implements OnInit {
     this.errorToStepThreeAdd = event;
   }
   cardArrayFun(event){
-    this.cardArray=event;
+    this.cardArray = event;
   }
   addresArrayFun(event){
     this.addresArray=event;
